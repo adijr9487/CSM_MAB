@@ -1,4 +1,4 @@
-# Cognitive Radior Network
+# Cognitive Radio Network
 ## _Stable Marriage Cordination - Multi Arm Bandit_
 
 ## Installation
