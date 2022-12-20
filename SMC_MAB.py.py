@@ -106,7 +106,6 @@ def rankChannels(channel_reward, channel_selection_count, num_of_user, num_of_ch
                               channel_selection_count[user][channel])
                 list_arr.append([Ik, channel])
 
-        # np.sort(list_arr)
         arr.append(list_arr)
         list_arr.sort(reverse=True)
         reverse_arr.append(list_arr)
@@ -141,7 +140,6 @@ def chooseInitiator(channel_rank, num_of_user, user_mapping):
 
 
 def transmit_and_learn(user_idx, user_mapping, channel_reward, channel_selection_count):
-    # print(user_mapping)
     channel_idx = user_mapping[user_idx]
 
     # channel selection increment for their sampling
@@ -182,13 +180,9 @@ def main():
     # print('Channel Configuration')
     # print(channel_mapping)
 
-    # print("==================================================================================================")
-    # print("==================================================================================================")
-    # print("==================================================================================================")
-
     for frame in range(1, 450):
+        
         # Beginning of Super Frame ( INITIALIZTION FRAME )
-
         if frame % (2*num_of_channels) == 1:
 
             ucb_indexing, channel_rank = rankChannels(
@@ -228,14 +222,13 @@ def main():
 
                     else:  # can not swap
                         pref += 1  # jump over next preference
-                    # print("After M-F: ", channel_mapping)
                 else:
                     user_mapping[initiator] = initiator_channel_idx
                     channel_mapping = {v: [k] for k, v in user_mapping.items()}
                     num_of_swap += 1
                     pref = len(channel_rank[initiator])  # stop upgradation
                     # print("After M-F: ", channel_mapping)
-                # print(user_mapping)
+                    # print(user_mapping)
                     print("Channel Reward", channel_reward[3])
                     print("Current Channel", user_mapping[3])
 
